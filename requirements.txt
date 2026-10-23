@@ -1,4 +1,4 @@
-Flask
-joblib
-numpy
-scikit-learn
+Flask>=3.0.0
+numpy>=1.24.0
+scikit-learn>=1.4.0
+gunicorn>=21.2.0
