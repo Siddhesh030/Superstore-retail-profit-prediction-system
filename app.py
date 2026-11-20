@@ -38,22 +38,28 @@ class RobustModelUnpickler(pickle.Unpickler):
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODEL_PATH = os.path.join(BASE_DIR, "Gradient_model.pkl")
 model = None
+load_debug = {
+    "base_dir": BASE_DIR,
+    "model_path": MODEL_PATH,
+    "model_exists": os.path.exists(MODEL_PATH),
+    "files_in_dir": os.listdir(BASE_DIR) if os.path.exists(BASE_DIR) else [],
+}
 
 if os.path.exists(MODEL_PATH):
     try:
         with open(MODEL_PATH, "rb") as f:
             model = RobustModelUnpickler(f).load()
-        print("GradientBoostingRegressor successfully loaded.")
+        load_debug["status"] = "loaded_via_robust"
     except Exception as e:
-        print(f"Robust unpickler failed ({e}), attempting standard unpickler...")
+        load_debug["robust_error"] = str(e)
         try:
             with open(MODEL_PATH, "rb") as f:
                 model = pickle.load(f)
-            print("GradientBoostingRegressor successfully loaded via standard unpickler.")
+            load_debug["status"] = "loaded_via_standard"
         except Exception as e2:
-            print(f"Error loading model: {e2}")
+            load_debug["standard_error"] = str(e2)
 else:
-    print(f"Notice: {MODEL_PATH} not found. Running in resilient simulation mode.")
+    load_debug["status"] = "model_file_not_found"
 
 # -----------------------------------------------------------------------------
 # Feature Schema and Metadata
@@ -713,7 +719,8 @@ def predict():
         return jsonify({
             "status": "success",
             "prediction": round(pred, 2),
-            "model_type": "GradientBoostingRegressor" if model is not None else "Simulation"
+            "model_type": "GradientBoostingRegressor" if model is not None else "Simulation",
+            "debug": load_debug
         })
     except Exception as e:
         return jsonify({
