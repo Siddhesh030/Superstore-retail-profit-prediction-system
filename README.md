@@ -1,454 +1,252 @@
-# 🏪 Superstore Prediction
+# 🏪 Superstore Profit & Margin Prediction System | NexusProfit Enterprise
 
-### 📊 Machine Learning | Predictive Analytics | Business Intelligence
+<p align="center">
+  <a href="https://superstore-prediction.vercel.app/">
+    <img src="https://img.shields.io/badge/Vercel-Live%20Demo-000000?style=for-the-badge&logo=vercel" alt="Live Demo">
+  </a>
+  <a href="https://github.com/Siddhesh030/Superstore-prediction">
+    <img src="https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github" alt="GitHub Repository">
+  </a>
+  <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python" alt="Python 3.10+">
+  <img src="https://img.shields.io/badge/Framework-Flask%203.x-000000?style=for-the-badge&logo=flask" alt="Flask 3.x">
+  <img src="https://img.shields.io/badge/ML%20Model-Gradient%20Boosting%20Regressor-F7931E?style=for-the-badge&logo=scikit-learn" alt="Scikit-Learn GBR">
+</p>
 
-An end-to-end predictive analytics project built around the Superstore retail business use case. The project aims to transform retail data into useful predictions and insights that can support better business decisions, sales planning, and performance analysis.
+An end-to-end Machine Learning web application and business intelligence platform designed to forecast order-level profitability and profit margins for retail operations using the **Superstore** dataset.
 
-🌐 **Live Demo:** [Superstore Prediction](https://superstore-prediction-nlyx.vercel.app/)
-
-💻 **GitHub Repository:** [Superstore-prediction](https://github.com/Siddhesh030/Superstore-prediction)
-
----
-
-## 📌 Project Overview
-
-The **Superstore Prediction** project focuses on applying data science and machine learning techniques to retail business data to support data-driven decision-making.
-
-Retail businesses generate large amounts of transactional data related to products, customers, orders, sales, discounts, and profitability. Analyzing this information can help businesses understand their performance, identify important patterns, and make better operational decisions.
-
-This project explores how predictive analytics can be applied to the Superstore business scenario. By using historical retail data and relevant business features, a prediction system can help estimate business outcomes based on the information provided.
-
-The project also demonstrates how predictive models can be integrated into a web application, making machine learning more accessible to users through an interactive interface.
-
-### 🎯 Main Objectives
-
-- Apply machine learning techniques to a retail business use case.
-- Understand the importance of data preparation and feature selection.
-- Use relevant business information to generate predictions.
-- Demonstrate the practical application of predictive analytics.
-- Connect data science concepts with a user-facing web application.
-- Develop an end-to-end project suitable for a data science portfolio.
-- Explore how predictive insights can support business planning and decision-making.
+Powered by a trained **100-tree Gradient Boosting Regressor (GBR)** and served via a high-performance **Flask** microservice on **Vercel Serverless**, featuring interactive sensitivity curves, distribution charts, preset retail scenarios, and instant margin vector telemetry.
 
 ---
 
-## 🌟 Key Features
+## 🌐 Live Application
 
-### 1. 📈 Retail Predictive Analytics
+### 👉 [Launch NexusProfit Enterprise Live Application](https://superstore-prediction.vercel.app/)
 
-Apply predictive analytics to the Superstore business scenario using relevant input data and a trained model, according to the implemented prediction workflow.
-
-### 2. 🧾 Business-Oriented Data Analysis
-
-Work with retail-related information to understand how business variables can contribute to analytical insights and prediction outcomes.
-
-### 3. 🤖 Machine Learning Integration
-
-Demonstrate the application of machine learning to a practical business problem, including the use of input features to produce model predictions.
-
-### 4. 🌐 Interactive Web Application
-
-Access the deployed application through a browser and interact with the prediction interface without needing to run the project locally.
-
-### 5. ⚡ Prediction Workflow
-
-Provide a user-facing workflow for submitting the required information and viewing the resulting prediction.
-
-### 6. 💡 Data-Driven Decision Support
-
-Demonstrate how predictive analytics can support retail planning, business performance evaluation, and informed decision-making.
-
-> **Note:** Confirm that each feature above is implemented in your current application before publishing this section. Remove any feature that is not supported by your actual code.
+Simulate retail orders, test discount sensitivity, and analyze profit yields live in your browser.
 
 ---
 
-## 🧠 Business Problem
+## 📌 Table of Contents
 
-Retail businesses must make decisions about sales performance, product selection, discounts, and profitability. Relying exclusively on historical reports may not always provide enough information to anticipate future outcomes.
-
-Predictive analytics can help address questions such as:
-
-- What business outcome might be expected for a given set of inputs?
-- How can historical retail information support future planning?
-- Which business variables should be considered when estimating an outcome?
-- How can machine learning make retail analysis more efficient?
-- How can predictions be made accessible through a simple web interface?
-
-The objective of this project is to demonstrate how a machine learning-based prediction system can help explore these questions within a Superstore retail context.
+- [Executive Summary](#-executive-summary)
+- [Key Features](#-key-features)
+- [Machine Learning Architecture](#-machine-learning-architecture)
+- [Feature Space & Schema](#-feature-space--schema)
+- [Interactive Studio Deck](#-interactive-studio-deck)
+- [REST API Reference](#-rest-api-reference)
+- [Technology Stack](#-technology-stack)
+- [Project Directory Structure](#-project-directory-structure)
+- [Local Installation & Setup](#-local-installation--setup)
+- [Deployment on Vercel](#-deployment-on-vercel)
+- [Author & Acknowledgments](#-author--acknowledgments)
 
 ---
 
-## 🔄 Project Workflow
+## 💼 Executive Summary
 
-The general workflow for a retail machine learning project can be represented as follows:
+In commercial retail and e-commerce, maximizing top-line sales without tracking bottom-line profit yields often leads to margin dilution. Factors such as aggressive discount rates, product sub-categories, shipping methods, and geographic distribution directly impact profitability.
+
+**NexusProfit Enterprise** solves this problem by providing real-time predictive insights before transactions are processed:
+1. **Accretive vs. Dilutive Analysis**: Instantly detects whether a discount or product mix will generate profit or incur operational loss.
+2. **Breakeven Floor Estimation**: Calculates the minimum absorption floor to protect margins.
+3. **Discount Curve Sensitivity**: Dynamically plots simulated discount rates from 0% to 70% against projected profits.
+
+---
+
+## ✨ Key Features
+
+* **🤖 Trained Gradient Boosting Regressor**: Employs an ensemble of 100 decision trees (`Gradient_model.pkl`) to capture non-linear interactions between pricing, discounts, shipping speed, and catalog sub-categories.
+* **⚡ One-Click Retail Presets**: Includes preconfigured industry scenarios for fast simulation:
+  * *Standard Office Bulk*: Moderate sales with 10% discount.
+  * *Technology Premium*: High-value phones/copiers with 0% discount resulting in strong profit yields.
+  * *Loss-Leader Clearance*: Deep 70% discount illustrating margin degradation.
+* **📊 Dual Dynamic Visualizations**:
+  * *Sensitivity Analysis*: Real-time Chart.js spline curve simulating profit across varying discount levels.
+  * *Revenue & Yield Doughnut Chart*: Visualizes cost base absorption vs. retained net profit.
+* **🛡️ Resilient Cross-Version Model Bridge**: Custom unpickler logic that automatically bridges Cython module structures across Scikit-learn versions for seamless cloud hosting.
+* **🎨 Modern Responsive UI**: Styled with Tailwind CSS, Alpine.js, and custom dark enterprise aesthetics.
+
+---
+
+## 🧠 Machine Learning Architecture
+
+The predictive core is built using a supervised **Gradient Boosting Regressor**:
 
 ```text
-Historical Retail Dataset
-          |
-          ▼
-    Data Collection
-          |
-          ▼
-  Data Preprocessing
-          |
-          ▼
-Exploratory Data Analysis
-          |
-          ▼
- Feature Engineering
-          |
-          ▼
-   Model Training
-          |
-          ▼
- Model Evaluation
-          |
-          ▼
-   Model Integration
-          |
-          ▼
-  Web Application
-          |
-          ▼
-   User Input
-          |
-          ▼
- Prediction Output
+  Raw Retail Input Vector (13 Variables)
+                   │
+                   ▼
+  Feature Ordering & Standardization
+                   │
+                   ▼
+  ┌──────────────────────────────────────────────┐
+  │  Gradient Boosting Regressor (100 Estimators) │
+  │  - Base Estimator: DecisionTreeRegressor     │
+  │  - Criterion: Friedman MSE                   │
+  │  - Learning Rate: 0.10                       │
+  │  - Max Depth: 3                              │
+  │  - Loss: Squared Error                       │
+  └──────────────────────────────────────────────┘
+                   │
+                   ▼
+  Predicted Order Profit ($) & Margin Ratio (%)
 ```
 
-### Workflow Explanation
+### Model Hyperparameters:
+* **Estimator Count (`n_estimators`)**: 100 trees
+* **Learning Rate (`learning_rate`)**: 0.10
+* **Max Depth (`max_depth`)**: 3
+* **Min Samples Split (`min_samples_split`)**: 2
+* **Loss Function**: `squared_error` (`HalfSquaredError`)
 
-**1. Data Collection**
+---
 
-Obtain the relevant retail dataset containing the information required for the prediction task.
+## 📋 Feature Space & Schema
 
-**2. Data Preprocessing**
+The model evaluates **13 discrete and continuous attributes**:
 
-Prepare the data for analysis by handling missing values, correcting data types, processing categorical variables, and addressing other data-quality issues where necessary.
+| Category | Feature Name | Description | Range / Values |
+|---|---|---|---|
+| **Financial** | `Sales` | Gross transaction value | `$1.00` – `$10,000.00` |
+| **Financial** | `Discount` | Discount rate applied | `0.00` (0%) – `0.80` (80%) |
+| **Financial** | `Quantity` | Number of units ordered | `1` – `50` units |
+| **Logistics** | `Ship Mode` | Shipping service tier | `0`: First Class, `1`: Same Day, `2`: Second Class, `3`: Standard Class |
+| **Catalog** | `Category` | High-level department | `0`: Furniture, `1`: Office Supplies, `2`: Technology |
+| **Catalog** | `Sub-Category` | Specific item classification | 17 categories (Accessories, Binders, Chairs, Phones, etc.) |
+| **Customer** | `Segment` | Purchasing customer type | `0`: Consumer, `1`: Corporate, `2`: Home Office |
+| **Logistics** | `Region` | Geographic territory | `0`: Central, `1`: East, `2`: South, `3`: West |
+| **Logistics** | `State` | Normalized state code | Index `0` – `48` |
+| **Logistics** | `City` | Normalized metropolitan area | Index `0` – `500` |
+| **Customer** | `Customer Name`| Account identifier | Index `0` – `792` |
+| **Catalog** | `Product Name` | SKU identifier | Index `0` – `1849` |
+| **Logistics** | `Country` | Country origin | `0`: United States |
 
-**3. Exploratory Data Analysis (EDA)**
+---
 
-Explore the dataset to understand its structure, distributions, relationships, and potential patterns.
+## 🔌 REST API Reference
 
-**4. Feature Engineering**
+The application exposes a lightweight JSON API for programmatic margin scoring.
 
-Identify and prepare the input variables needed by the machine learning model.
+### `POST /predict`
 
-**5. Model Training**
+#### Request Headers:
+```http
+Content-Type: application/json
+```
 
-Train the selected machine learning algorithm using the prepared dataset and the target variable defined for the project.
+#### Request Payload:
+```json
+{
+  "features": {
+    "Sales": 250.0,
+    "Discount": 0.10,
+    "Quantity": 3,
+    "Ship Mode": 0,
+    "Category": 0,
+    "Sub-Category": 3,
+    "Segment": 0,
+    "Region": 1,
+    "State": 10,
+    "City": 20,
+    "Customer Name": 10,
+    "Product Name": 100,
+    "Country": 0
+  }
+}
+```
 
-**6. Model Evaluation**
-
-Evaluate the model using suitable metrics for the prediction task.
-
-**7. Model Integration**
-
-Connect the trained model and its preprocessing steps to the application.
-
-**8. Prediction**
-
-Allow users to provide the required input information and obtain a prediction from the deployed system.
-
-*The exact stages, algorithms, and evaluation methods should reflect the implementation in your repository.*
+#### Successful Response (`200 OK`):
+```json
+{
+  "status": "success",
+  "prediction": 42.58,
+  "model_type": "GradientBoostingRegressor"
+}
+```
 
 ---
 
 ## 🛠️ Technology Stack
 
-The following technologies are commonly used in Superstore predictive analytics projects. Retain only those present in your actual implementation.
-
-| Technology | Purpose |
-|---|---|
-| Python | Data science and machine learning development |
-| Pandas | Data manipulation and preprocessing |
-| NumPy | Numerical computations |
-| Scikit-learn | Machine learning and model evaluation |
-| Matplotlib | Data visualization |
-| Seaborn | Statistical data visualization |
-| HTML | Web page structure, if applicable |
-| CSS | Web interface styling, if applicable |
-| JavaScript | Client-side interactions, if applicable |
-| Vercel | Hosting and deployment of the live application |
-
-**Important:** Update this table to match your actual dependencies and deployment architecture. Do not list a library merely because it is commonly used in similar projects.
+* **Backend Engine**: [Flask 3.x](https://flask.palletsprojects.com/) (Python 3.10+)
+* **Machine Learning**: [Scikit-Learn](https://scikit-learn.org/), NumPy, Pandas
+* **Frontend UI**: [Tailwind CSS](https://tailwindcss.com/) (CDN), [Alpine.js](https://alpinejs.dev/), [Chart.js](https://www.chartjs.org/)
+* **Typography**: Plus Jakarta Sans, JetBrains Mono
+* **Deployment & Hosting**: [Vercel](https://vercel.com/) Serverless Functions (`@vercel/python`)
 
 ---
 
-## 📊 Dataset Description
+## 📁 Project Directory Structure
 
-The Superstore dataset is commonly used to study retail transactions, sales performance, customer behavior, and profitability.
-
-Depending on the dataset used in this project, relevant fields may include:
-
-| Feature | Description |
-|---|---|
-| Order ID | Identifier associated with an order |
-| Order Date | Date on which an order was placed |
-| Ship Date | Date on which an order was shipped |
-| Customer ID | Identifier associated with a customer |
-| Customer Segment | Business classification of a customer |
-| Product Category | Broad classification of a product |
-| Product Sub-Category | More specific product classification |
-| Sales | Revenue associated with a transaction |
-| Quantity | Number of units ordered |
-| Discount | Discount applied to a transaction |
-| Profit | Profit or loss associated with a transaction |
-| Region | Geographical area associated with an order |
-
-These are examples of fields found in common Superstore datasets, **not a verified inventory of the columns used by this project**.
-
-The exact dataset, target variable, input features, and preprocessing steps should be documented according to the files in your repository.
-
----
-
-## 🤖 Machine Learning Approach
-
-The machine learning component should be documented according to the algorithm implemented in your project.
-
-A typical predictive modeling workflow includes:
-
-- **Feature Selection:** Identifying relevant input variables for the prediction task.
-- **Data Preprocessing:** Preparing numerical and categorical variables for model training.
-- **Train-Test Split:** Separating data into training and testing sets to evaluate generalization.
-- **Model Training:** Fitting the selected algorithm to the training data.
-- **Model Evaluation:** Measuring predictive performance with appropriate evaluation metrics.
-- **Prediction Generation:** Applying the trained model to new input data.
-
-### Model Evaluation
-
-The evaluation metrics depend on the prediction target.
-
-For a regression model, commonly used metrics include:
-
-- **Mean Absolute Error (MAE):** Measures the average absolute difference between actual and predicted values.
-- **Mean Squared Error (MSE):** Measures the average squared prediction error.
-- **Root Mean Squared Error (RMSE):** Expresses prediction error on the target variable's original scale.
-- **R² Score:** Measures the proportion of target variance explained by the model, relative to a mean-prediction baseline.
-
-For a classification model, metrics such as accuracy, precision, recall, F1-score, and a confusion matrix may be more appropriate.
-
-**Model details:** Add your actual algorithm, evaluation metrics, and measured results here once verified. Avoid reporting unmeasured accuracy or performance figures.
-
----
-
-## 💻 Live Application
-
-Try the deployed application:
-
-### 🚀 [Open Superstore Prediction](https://superstore-prediction-nlyx.vercel.app/)
-
-The live application provides a way to explore the project's prediction interface directly in a web browser.
-
-**Suggested usage:**
-
-1. Open the live application.
-2. Review the available input fields.
-3. Enter the required information.
-4. Submit the inputs using the application's available controls.
-5. Review the prediction returned by the application.
-
-The precise input requirements and prediction output depend on the implemented application.
-
----
-
-## 🚀 Getting Started
-
-Follow these instructions to obtain the project source code and prepare a local development environment.
-
-### Prerequisites
-
-Depending on your implementation, you may need:
-
-- Git
-- Python 3.x
-- pip
-- A code editor, such as Visual Studio Code
-- The project dataset and any required model artifacts
-
-If your application uses a separate frontend and backend, install the appropriate runtime and dependencies for each component.
-
-### 1. Clone the Repository
-
-Open a terminal and run:
-
-```bash
-git clone https://github.com/Siddhesh030/Superstore-prediction.git
+```text
+Superstore-prediction/
+├── app.py                 # Flask server, ML inference pipeline & Alpine.js template
+├── Gradient_model.pkl     # Trained GradientBoostingRegressor scikit-learn model
+├── requirements.txt       # Production dependencies (Flask, scikit-learn, numpy, pandas)
+├── vercel.json            # Serverless deployment configuration for Vercel
+└── README.md              # Documentation
 ```
 
-### 2. Navigate to the Project Directory
+---
 
+## 💻 Local Installation & Setup
+
+To run the application locally on your workstation:
+
+### 1. Clone the Repository
 ```bash
+git clone https://github.com/Siddhesh030/Superstore-prediction.git
 cd Superstore-prediction
 ```
 
-### 3. Create a Virtual Environment
-
-For Windows:
-
+### 2. Set Up Virtual Environment
 ```bash
+# Windows
 python -m venv venv
-```
-
-Activate it:
-
-```bash
 venv\Scripts\activate
-```
 
-For macOS or Linux:
-
-```bash
+# macOS / Linux
 python3 -m venv venv
 source venv/bin/activate
 ```
 
-### 4. Install Dependencies
-
-If the repository contains a `requirements.txt` file, install the dependencies with:
-
+### 3. Install Requirements
 ```bash
 pip install -r requirements.txt
 ```
 
-If your project uses a different package manager or has separate frontend dependencies, follow the corresponding configuration files.
-
-### 5. Run the Application
-
-The command depends on the actual application framework and entry-point file.
-
-For example, if your project is a Flask application with an `app.py` entry point:
-
+### 4. Launch the Server
 ```bash
 python app.py
 ```
 
-If it is a Streamlit application with an `app.py` entry point:
-
-```bash
-streamlit run app.py
-```
-
-If it uses a JavaScript frontend, follow the instructions in its `package.json`.
-
-**Before publishing these commands, verify the correct entry point in your repository.** Do not run every example above; use only the command that matches your application.
+Open [http://localhost:5000](http://localhost:5000) in your web browser.
 
 ---
 
-## 📁 Project Structure
+## ☁️ Deployment on Vercel
 
-The following is an illustrative structure for a machine learning prediction project. Replace it with your repository's actual directory structure.
+The project is natively configured for zero-configuration deployments on **Vercel**:
 
-```text
-Superstore-prediction/
-│
-├── data/                  # Dataset files, if included
-├── notebooks/             # Analysis and experimentation, if included
-├── models/                # Saved model artifacts, if included
-├── src/                   # Data processing or model code, if included
-├── app.py                 # Application entry point, if applicable
-├── requirements.txt       # Python dependencies, if applicable
-├── package.json           # Frontend dependencies, if applicable
-├── .gitignore             # Files excluded from version control
-└── README.md              # Project documentation
-```
+1. Fork or push this repository to your GitHub account.
+2. Sign in to your [Vercel Dashboard](https://vercel.com/).
+3. Click **Add New Project** and select `Superstore-prediction`.
+4. Leave root settings as default (`vercel.json` automatically manages routing).
+5. Click **Deploy**.
 
-The actual directory structure may differ. Update this section after checking the repository files.
-
----
-
-## 📈 Potential Business Applications
-
-Predictive analytics for retail businesses can support several practical use cases:
-
-- **Sales Planning:** Use predictions to support sales planning and business forecasting.
-- **Profitability Analysis:** Study factors associated with business profitability.
-- **Discount Evaluation:** Investigate how discount levels relate to sales and profit.
-- **Product Performance:** Compare outcomes across product categories and sub-categories.
-- **Regional Analysis:** Examine differences in business performance across geographical areas.
-- **Business Decision Support:** Use analytical findings to inform operational planning.
-
-These are potential applications of retail predictive analytics. They should not be interpreted as a claim that every capability is implemented in the current application.
-
----
-
-## 🎓 Skills Demonstrated
-
-This project can demonstrate the following skills, provided they are reflected in the actual implementation:
-
-- Python programming
-- Data preprocessing and preparation
-- Exploratory data analysis
-- Feature engineering
-- Machine learning
-- Predictive modeling
-- Model evaluation
-- Data-driven problem-solving
-- Web application integration
-- Application deployment
-- Technical documentation
-- Translating business problems into analytical workflows
-
-The project is intended to bridge the gap between theoretical machine learning concepts and their practical application in a retail business scenario.
-
----
-
-## 🔮 Future Enhancements
-
-Possible future improvements include:
-
-- Adding interactive sales and profitability dashboards.
-- Comparing multiple machine learning algorithms.
-- Performing systematic hyperparameter tuning.
-- Adding model evaluation visualizations.
-- Improving input validation and error handling.
-- Providing explanations of the variables influencing predictions.
-- Introducing additional retail datasets and business features.
-- Developing downloadable prediction reports.
-- Implementing automated model retraining when appropriate.
-- Adding automated testing and deployment checks.
-
-These enhancements can be considered as future development opportunities rather than existing features.
-
----
-
-## ⚠️ Limitations
-
-- Prediction quality depends on the quality and representativeness of the training data.
-- Predictions may be less reliable for inputs that differ substantially from the training data.
-- Historical patterns do not necessarily represent future business conditions.
-- Model performance should be evaluated using suitable validation procedures.
-- Predictions should be treated as decision-support information rather than guaranteed business outcomes.
+Any new push to the `main` branch automatically triggers a fresh deployment.
 
 ---
 
 ## 👨‍💻 Author
 
 **Siddhesh**
-
-Aspiring Data Scientist | Aspiring Data Analyst | Machine Learning Enthusiast
-
-- **GitHub:** [Siddhesh030](https://github.com/Siddhesh030)
-- **Project Repository:** [Superstore-prediction](https://github.com/Siddhesh030/Superstore-prediction)
-- **Live Demo:** [Superstore Prediction](https://superstore-prediction-nlyx.vercel.app/)
+* **GitHub**: [@Siddhesh030](https://github.com/Siddhesh030)
+* **Project Repository**: [Superstore-prediction](https://github.com/Siddhesh030/Superstore-prediction)
+* **Live Deployment**: [https://superstore-prediction.vercel.app](https://superstore-prediction.vercel.app)
 
 ---
 
-## ⭐ Support the Project
+## ⭐ Support
 
-If you find this project useful or interesting:
-
-- ⭐ Star the repository.
-- 🍴 Fork the repository to explore or extend the implementation.
-- 💡 Share suggestions for improvement.
-- 🤝 Contribute improvements through pull requests.
-
-Your feedback and suggestions are welcome!
-
----
-
-## 📄 License
-
-If you want others to reuse or modify this project, consider adding an appropriate open-source license to the repository.
-
-Until a license is added and verified, refer to the repository's existing licensing terms.
+If this predictive analytics and retail margin optimization project is helpful to your work or learning, please consider starring ⭐ the repository!
