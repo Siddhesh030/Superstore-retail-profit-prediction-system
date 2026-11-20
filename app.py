@@ -8,9 +8,24 @@ from flask import Flask, render_template_string, request, jsonify
 app = Flask(__name__)
 
 # -----------------------------------------------------------------------------
-# Scikit-Learn Compatibility & Robust Unpickler
+# Scikit-Learn & NumPy Compatibility Layer
 # -----------------------------------------------------------------------------
-# Ensure Cython _loss references from scikit-learn unpickle correctly across versions
+# 1. Patch NumPy BitGenerator constructor for cross-version (NumPy 1.x vs 2.x) pickle compatibility
+try:
+    import numpy.random._pickle as npr_pickle
+    orig_ctor = npr_pickle.__bit_generator_ctor
+    def safe_bit_generator_ctor(bit_generator="MT19937"):
+        if not isinstance(bit_generator, str):
+            if hasattr(bit_generator, "__name__"):
+                bit_generator = bit_generator.__name__
+            else:
+                bit_generator = str(bit_generator).split(".")[-1].replace("'>", "")
+        return orig_ctor(bit_generator)
+    npr_pickle.__bit_generator_ctor = safe_bit_generator_ctor
+except Exception:
+    pass
+
+# 2. Ensure Cython _loss references from scikit-learn unpickle correctly across versions
 try:
     import sklearn._loss._loss
     sys.modules["_loss"] = sklearn._loss._loss
