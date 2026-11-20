@@ -34,6 +34,10 @@ except Exception:
 
 class RobustModelUnpickler(pickle.Unpickler):
     def find_class(self, module, name):
+        if name == "__bit_generator_ctor":
+            return lambda *a, **kw: __import__("numpy.random", fromlist=["MT19937"]).MT19937()
+        if name == "__randomstate_ctor":
+            return lambda *a, **kw: __import__("numpy.random", fromlist=["RandomState"]).RandomState()
         if module == "_loss":
             try:
                 import sklearn._loss._loss as sk_loss
@@ -734,8 +738,7 @@ def predict():
         return jsonify({
             "status": "success",
             "prediction": round(pred, 2),
-            "model_type": "GradientBoostingRegressor" if model is not None else "Simulation",
-            "debug": load_debug
+            "model_type": "GradientBoostingRegressor" if model is not None else "Simulation"
         })
     except Exception as e:
         return jsonify({
